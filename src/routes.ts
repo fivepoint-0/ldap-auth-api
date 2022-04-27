@@ -1,3 +1,4 @@
+import { LdapServerController } from "./controller/ServerController"
 import { SessionController } from "./controller/SessionController"
 
 // Each of the routes in this array of routes has information used to 
@@ -22,4 +23,10 @@ export const Routes = [{
   route: "/sessions/:id",
   controller: SessionController,
   action: "logout"
+},
+{
+  method: "get",
+  route: "/servers",
+  controller: LdapServerController,
+  action: "all"
 }]

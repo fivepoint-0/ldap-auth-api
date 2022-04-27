@@ -1,0 +1,41 @@
+version: 3.0.0
+services:
+  api:
+    build: ./Dockerfile
+    depends_on:
+      - mongo
+    networks:
+      - ldapapi
+    ports:
+      - '4001:4001'
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=MONGODB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=MONGODB_PASSWORD
+    restart: on-failure
+    volumes:
+      - ./mongodb:/data/db
+    networks:
+      - ldapapi
+  openldap:
+    image: docker.io/bitnami/openldap:2.6
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=adminpassword
+      - LDAP_USERS=user01,user02
+      - LDAP_PASSWORDS=password1,password2
+    volumes:
+      - 'openldap_data:/bitnami/openldap'
+
+volumes:
+  openldap_data:
+    driver: local
+networks:
+    ldapapi:
+        external: true

@@ -1,11 +1,11 @@
 import { getRepository } from "typeorm"
 import { NextFunction, Request, Response } from "express"
-import { Session } from "../entity/Session"
+import { Server } from "../entity/Server"
 
 export class LdapServerController {
   // TypeORM's getRepository uses an Entity from ../entities to create a controller
   // based on a type.
-  private ldapServerRepository = getRepository(Session)
+  private ldapServerRepository = getRepository(Server)
 
   async all(request: Request, response: Response, next: NextFunction) {
     return this.ldapServerRepository.find()
@@ -20,7 +20,7 @@ export class LdapServerController {
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let userToRemove = await this.ldapServerRepository.findOne(request.params.id)
-    await this.ldapServerRepository.remove(userToRemove)
+    let serverToRemove = await this.ldapServerRepository.findOne(request.params.id)
+    await this.ldapServerRepository.remove(serverToRemove)
   }
 }

@@ -69,4 +69,8 @@ export default class LdapClient {
       })
     })
   }
+
+  async logout() {
+    await this.client.unbind();
+  }
 }

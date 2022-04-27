@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ObjectIdColumn, ObjectID } from "typeorm"
 
 @Entity()
 export class Server {
-  @PrimaryGeneratedColumn()
-  id: number
+  @ObjectIdColumn()
+  id: ObjectID
 
   @Column({ default: '' })
   host: string

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDAP Login API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+    <script src="js/dom.js" defer></script>
+    <script src="js/client.js" defer></script>
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <nav>
+            <div class="nav-wrapper purple">
+                <ul class="right" id="tabList">
+                    <li><a href="#" class="sessions">Sessions</a></li>
+                    <li><a href="#" class="servers">Servers</a></li>
+                    <li><a href="#" class="apitesting">API Testing</a></li>
+                </ul>
+                <ul class="right">
+                    <li><a href="#" id="refreshData"><i class="material-icons icon">refresh</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </main>
+    <div class="container">
+        <div class="row tab" id="sessions-tab">
+            <div class="col s12">
+                <table id="sessionsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Session ID</th>
+                            <th>Server</th>
+                            <th>Username</th>
+                            <th>App</th>
+                            <th>Referer</th>
+                            <th>User Agent</th>
+                            <th>Client IP Address</th>
+                            <th>Failure</th>
+                            <th>Creation Timestamp</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row tab hidden" id="servers-tab">
+            <table id="serversTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Host</th>
+                        <th>Port</th>
+                        <th>Domain</th>
+                        <th>Base DN</th>
+                        <th>Lockout Count</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="row tab hidden" id="apitesting-tab">
+            <h1>Not active</h1>
+        </div>
+    </div>
+</body>
+
+</html>

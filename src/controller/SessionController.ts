@@ -45,6 +45,9 @@ export class SessionController {
       }
       
       if (client.authenticated) {
+
+        client.logout()
+        
         return this.sessionRepository.save({
           app: request.body.app || 'LDAP',
           clientIpAddress: request.ip,
